@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ahmed Elbltagy — Full-stack &amp; Desktop Engineer</title>
+<meta name="description" content="Ahmed Elbltagy builds production software that businesses run on — full-stack web, desktop, and realtime systems. Dispatch SaaS, pharmacy POS, B2B marketplaces, and more." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23151A21'/%3E%3Ctext x='50' y='68' font-family='monospace' font-size='52' font-weight='700' fill='%23FF5A2C' text-anchor='middle'%3EAE%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #F4F6F8;
+    --paper-pure: #FFFFFF;
+    --ink: #151A21;
+    --slate: #5A6675;
+    --slate-soft: #8A94A2;
+    --line: #E2E6EB;
+    --signal: #FF5A2C;
+    --signal-soft: #FFE9E1;
+    --panel: #11161D;
+    --panel-line: #283340;
+    --panel-text: #C9D2DD;
+
+    --display: "Bricolage Grotesque", sans-serif;
+    --body: "IBM Plex Sans", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+
+    --maxw: 1140px;
+    --radius: 14px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+  body {
+    font-family: var(--body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--slate);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 22px;
+    height: 2px;
+    background: var(--signal);
+    display: inline-block;
+  }
+
+  /* ---------- nav ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(244, 246, 248, 0.82);
+    backdrop-filter: saturate(140%) blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; font-family: var(--mono); font-weight: 600; font-size: 0.95rem; }
+  .brand-mark {
+    width: 34px; height: 34px; border-radius: 9px;
+    background: var(--ink); color: var(--signal);
+    display: grid; place-items: center;
+    font-family: var(--mono); font-weight: 700; font-size: 0.95rem;
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; align-items: center; gap: 30px; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 0.82rem; color: var(--slate);
+    letter-spacing: 0.02em; transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-status {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono); font-size: 0.78rem; color: var(--ink);
+    border: 1px solid var(--line); background: var(--paper-pure);
+    padding: 7px 13px; border-radius: 999px;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--signal); position: relative; flex: none; }
+  .dot::after {
+    content: ""; position: absolute; inset: -4px; border-radius: 50%;
+    border: 2px solid var(--signal); opacity: 0.6;
+    animation: ping 1.8s cubic-bezier(0,0,0.2,1) infinite;
+  }
+  @keyframes ping { 75%,100% { transform: scale(2.2); opacity: 0; } }
+  .nav-toggle { display: none; background: none; border: 1px solid var(--line); border-radius: 8px; padding: 8px 11px; cursor: pointer; font-family: var(--mono); font-size: 0.8rem; }
+
+  /* ---------- hero ---------- */
+  .hero { padding: clamp(56px, 9vw, 110px) 0 clamp(48px, 7vw, 88px); }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center; }
+  .hero-h1 {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(2.6rem, 6.2vw, 4.7rem);
+    line-height: 1.01; letter-spacing: -0.025em;
+    margin: 22px 0 0;
+  }
+  .hero-h1 .mark { color: var(--signal); }
+  .hero-sub {
+    font-size: clamp(1.02rem, 1.4vw, 1.18rem);
+    color: var(--slate); max-width: 36ch; margin-top: 24px;
+  }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--mono); font-size: 0.85rem; font-weight: 500;
+    padding: 13px 22px; border-radius: 10px; cursor: pointer;
+    border: 1px solid var(--ink); transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+  }
+  .btn-primary { background: var(--ink); color: var(--paper); }
+  .btn-primary:hover { background: var(--signal); border-color: var(--signal); color: #fff; transform: translateY(-2px); }
+  .btn-ghost { background: transparent; color: var(--ink); }
+  .btn-ghost:hover { transform: translateY(-2px); border-color: var(--signal); color: var(--signal); }
+  .btn .arrow { transition: transform 0.18s ease; }
+  .btn:hover .arrow { transform: translate(3px, -3px); }
+
+  /* manifest signature panel */
+  .manifest {
+    background: var(--panel); border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--panel-line);
+    box-shadow: 0 30px 60px -30px rgba(17,22,29,0.5);
+  }
+  .manifest-bar {
+    display: flex; align-items: center; gap: 8px;
+    padding: 13px 16px; border-bottom: 1px solid var(--panel-line);
+  }
+  .manifest-bar .tl { width: 11px; height: 11px; border-radius: 50%; background: #2f3a47; }
+  .manifest-bar .tl.live { background: var(--signal); }
+  .manifest-file { margin-left: 8px; font-family: var(--mono); font-size: 0.74rem; color: var(--slate-soft); }
+  .manifest-body { padding: 22px 22px 24px; font-family: var(--mono); font-size: 0.82rem; }
+  .manifest-comment { color: #586675; margin-bottom: 14px; }
+  .m-row { display: grid; grid-template-columns: 96px 1fr; gap: 14px; padding: 6px 0; }
+  .m-key { color: var(--slate-soft); letter-spacing: 0.04em; }
+  .m-val { color: var(--panel-text); }
+  .m-val .live-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--signal); margin-right: 8px; vertical-align: middle; }
+  .m-val .hl { color: #fff; }
+
+  /* ---------- section scaffolding ---------- */
+  .section { padding: clamp(56px, 8vw, 96px) 0; }
+  .section-alt { border-top: 1px solid var(--line); }
+  .section-head { max-width: 60ch; margin-bottom: 46px; }
+  .section-title {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(1.8rem, 3.6vw, 2.7rem);
+    line-height: 1.05; letter-spacing: -0.02em; margin-top: 16px;
+  }
+  .section-note { color: var(--slate); margin-top: 14px; max-width: 52ch; }
+
+  /* ---------- featured builds ---------- */
+  .builds { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .build {
+    background: var(--paper-pure); border: 1px solid var(--line);
+    border-radius: var(--radius); overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  }
+  .build:hover { transform: translateY(-5px); box-shadow: 0 22px 40px -26px rgba(21,26,33,0.4); border-color: #cfd6de; }
+  .build-media { aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid var(--line); background: var(--panel); }
+  .build-media img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.45s ease; }
+  .build:hover .build-media img { transform: scale(1.045); }
+  .build-body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
+  .build-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 13px; }
+  .tier {
+    font-family: var(--mono); font-size: 0.66rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 4px 9px; border-radius: 6px;
+    background: var(--signal-soft); color: #C23A12;
+  }
+  .build-idx { font-family: var(--mono); font-size: 0.72rem; color: var(--slate-soft); }
+  .build-name { font-family: var(--display); font-weight: 600; font-size: 1.32rem; letter-spacing: -0.01em; }
+  .build-desc { color: var(--slate); font-size: 0.94rem; margin-top: 9px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+  .chip {
+    font-family: var(--mono); font-size: 0.68rem; color: var(--slate);
+    background: var(--paper); border: 1px solid var(--line);
+    padding: 4px 8px; border-radius: 6px;
+  }
+  .build-actions {
+    margin-top: auto; display: flex; gap: 20px; align-items: center;
+    border-top: 1px solid var(--line); padding-top: 16px; margin-top: 20px;
+  }
+  .build-body > .build-actions { margin-top: auto; }
+  .build-link {
+    font-family: var(--mono); font-size: 0.78rem; color: var(--ink);
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .build-link .arrow { color: var(--signal); transition: transform 0.18s ease; }
+  .build-link:hover { color: var(--signal); }
+  .build-link:hover .arrow { transform: translate(3px, -3px); }
+  .build-link.is-live { color: var(--signal); font-weight: 500; }
+  .build-link.is-live .arrow { color: var(--signal); }
+
+  /* ---------- more work ---------- */
+  .more { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .mini {
+    background: var(--paper-pure); border: 1px solid var(--line);
+    border-radius: 11px; padding: 18px 18px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .mini:hover { border-color: var(--signal); transform: translateY(-3px); }
+  .mini-name { font-weight: 600; font-size: 1rem; display: flex; align-items: center; justify-content: space-between; }
+  .mini-name .arrow { color: var(--slate-soft); font-family: var(--mono); }
+  .mini:hover .mini-name .arrow { color: var(--signal); }
+  .mini-desc { color: var(--slate); font-size: 0.88rem; margin-top: 6px; }
+  .mini-tag { font-family: var(--mono); font-size: 0.68rem; color: var(--slate-soft); margin-top: 12px; display: block; }
+
+  /* ---------- stack ---------- */
+  .stack { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 36px; }
+  .stack-col-title {
+    font-family: var(--mono); font-size: 0.74rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink);
+    padding-bottom: 12px; border-bottom: 1px solid var(--line); margin-bottom: 14px;
+  }
+  .stack-col-title span { color: var(--signal); }
+  .stack-list { list-style: none; }
+  .stack-list li { color: var(--slate); padding: 5px 0; font-size: 0.95rem; }
+
+  /* ---------- about + contact ---------- */
+  .about-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 52px; align-items: start; }
+  .about-body p { color: var(--slate); margin-bottom: 16px; font-size: 1.04rem; }
+  .about-body strong { color: var(--ink); font-weight: 600; }
+
+  .contact {
+    background: var(--panel); color: var(--paper);
+    border-radius: 20px; padding: clamp(36px, 5vw, 64px);
+    display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: center;
+  }
+  .contact-title { font-family: var(--display); font-weight: 700; font-size: clamp(1.8rem, 3.4vw, 2.6rem); line-height: 1.06; letter-spacing: -0.02em; }
+  .contact-sub { color: var(--panel-text); margin-top: 14px; max-width: 40ch; }
+  .contact-actions { display: flex; flex-direction: column; gap: 12px; min-width: 220px; }
+  .btn-light { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+  .btn-light:hover { background: var(--signal); border-color: var(--signal); color: #fff; transform: translateY(-2px); }
+  .btn-line { background: transparent; color: var(--paper); border-color: var(--panel-line); }
+  .btn-line:hover { border-color: var(--signal); color: var(--signal); transform: translateY(-2px); }
+
+  /* ---------- footer ---------- */
+  .footer { border-top: 1px solid var(--line); padding: 30px 0; }
+  .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: var(--mono); font-size: 0.78rem; color: var(--slate); }
+  .footer-inner a:hover { color: var(--signal); }
+
+  /* ---------- reveal animation ---------- */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.is-visible { opacity: 1; transform: none; }
+  .hero .reveal { transition-delay: 0.05s; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .builds { grid-template-columns: repeat(2, 1fr); }
+    .more { grid-template-columns: repeat(2, 1fr); }
+    .stack { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; gap: 30px; }
+    .contact { grid-template-columns: 1fr; }
+    .contact-actions { min-width: 0; }
+  }
+  @media (max-width: 620px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: inline-block; }
+    .nav-links.open {
+      display: flex; flex-direction: column; align-items: flex-start; gap: 18px;
+      position: absolute; top: 68px; left: 0; right: 0;
+      background: var(--paper); border-bottom: 1px solid var(--line);
+      padding: 22px 24px;
+    }
+    .nav-links.open .nav-status { display: none; }
+    .builds, .more, .stack { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  :focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+  <!-- nav -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark">AE</span>
+        <span>ahmed.elbltagy</span>
+      </a>
+      <nav class="nav-links" id="navlinks">
+        <a href="#work">work</a>
+        <a href="#stack">stack</a>
+        <a href="#about">about</a>
+        <a href="#contact">contact</a>
+        <span class="nav-status"><span class="dot"></span> available for work</span>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">menu</button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- hero -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow reveal">Full-stack &amp; desktop engineer</span>
+          <h1 class="hero-h1 reveal">I build software that businesses actually <span class="mark">run on.</span></h1>
+          <p class="hero-sub reveal">Full-stack web, desktop, and realtime systems — from locksmith dispatch SaaS to a bilingual pharmacy POS. Production-grade, shipped, and documented so your team can maintain it.</p>
+          <div class="hero-cta reveal">
+            <a class="btn btn-primary" href="#work">View the work <span class="arrow">↗</span></a>
+            <a class="btn btn-ghost" href="#contact">Start a project</a>
+          </div>
+        </div>
+
+        <!-- signature: deployment manifest -->
+        <aside class="manifest reveal" aria-label="Profile summary">
+          <div class="manifest-bar">
+            <span class="tl"></span><span class="tl"></span><span class="tl live"></span>
+            <span class="manifest-file">ahmed.elbltagy — manifest.json</span>
+          </div>
+          <div class="manifest-body">
+            <div class="manifest-comment">// currently deployable</div>
+            <div class="m-row"><span class="m-key">status</span><span class="m-val"><span class="live-dot"></span><span class="hl">available</span> for freelance work</span></div>
+            <div class="m-row"><span class="m-key">engineer</span><span class="m-val hl">Ahmed Elbltagy</span></div>
+            <div class="m-row"><span class="m-key">role</span><span class="m-val">full-stack &amp; desktop developer</span></div>
+            <div class="m-row"><span class="m-key">based</span><span class="m-val">Cairo, Egypt — remote</span></div>
+            <div class="m-row"><span class="m-key">langs</span><span class="m-val">Arabic / English · RTL-ready</span></div>
+            <div class="m-row"><span class="m-key">stack</span><span class="m-val">React · TypeScript · Node · Django · Electron</span></div>
+            <div class="m-row"><span class="m-key">domains</span><span class="m-val">healthcare · logistics · B2B trade · fintech</span></div>
+            <div class="m-row"><span class="m-key">shipped</span><span class="m-val">dispatch SaaS · pharmacy POS · marketplaces</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- featured work -->
+    <section class="section section-alt" id="work">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Featured builds</span>
+          <h2 class="section-title">Production systems, shipped end to end.</h2>
+          <p class="section-note">Six builds where I owned the full stack — frontend, backend, realtime, and deployment. Four are deployed — click through to a live demo or the source.</p>
+        </div>
+
+        <div class="builds">
+          <article class="build reveal">
+            <div class="build-media"><img src="assets/lockguard-pro.png" alt="LockGuard Pro dispatch platform" loading="lazy" /></div>
+            <div class="build-body">
+              <div class="build-top"><span class="tier">Flagship</span><span class="build-idx">01</span></div>
+              <h3 class="build-name">LockGuard Pro</h3>
+              <p class="build-desc">Multi-tenant locksmith dispatch SaaS with live technician tracking on a map, live ETAs, and a technician PWA for photos and signatures.</p>
+              <div class="chips"><span class="chip">React</span><span class="chip">NestJS</span><span class="chip">Prisma</span><span class="chip">PostgreSQL</span><span class="chip">Socket.IO</span><span class="chip">Leaflet · OSRM</span></div>
+              <div class="build-actions">
+                <a class="build-link is-live" href="https://elbltagy2.github.io/portfolio-demos/lockguard-pro/" target="_blank" rel="noopener">Live demo <span class="arrow">↗</span></a>
+                <a class="build-link" href="https://github.com/Elbltagy2/lockguard-pro" target="_blank" rel="noopener">Source <span class="arrow">↗</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="build reveal">
+            <div class="build-media"><img src="assets/arabi-pharma-pos.png" alt="Arabi Pharma POS — desktop app" loading="lazy" /></div>
+            <div class="build-body">
+              <div class="build-top"><span class="tier">Flagship</span><span class="build-idx">02</span></div>
+              <h3 class="build-name">Arabi Pharma POS</h3>
+              <p class="build-desc">Offline-first desktop pharmacy system: point-of-sale, barcode scanning, batch-aware inventory, and an inter-pharmacy marketplace. Fully bilingual AR/EN.</p>
+              <div class="chips"><span class="chip">Electron</span><span class="chip">React</span><span class="chip">Express</span><span class="chip">Prisma</span><span class="chip">SQLite</span><span class="chip">barcode/QR</span></div>
+              <div class="build-actions">
+                <a class="build-link" href="https://github.com/Elbltagy2/arabi-pharma-pos" target="_blank" rel="noopener">Source <span class="arrow">↗</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="build reveal">
+            <div class="build-media"><img src="assets/fruitful-trades.png" alt="Fruitful Trades B2B marketplace" loading="lazy" /></div>
+            <div class="build-body">
+              <div class="build-top"><span class="tier">Flagship</span><span class="build-idx">03</span></div>
+              <h3 class="build-name">Fruitful Trades</h3>
+              <p class="build-desc">B2B agricultural-export marketplace with a 9-state escrow workflow, multi-currency pricing, and Incoterms — built on a clean-architecture backend.</p>
+              <div class="chips"><span class="chip">React</span><span class="chip">Fastify</span><span class="chip">Clean Arch</span><span class="chip">Prisma</span><span class="chip">PostgreSQL</span></div>
+              <div class="build-actions">
+                <a class="build-link is-live" href="https://elbltagy2.github.io/portfolio-demos/fruitful-trades/" target="_blank" rel="noopener">Live demo <span class="arrow">↗</span></a>
+                <a class="build-link" href="https://github.com/Elbltagy2/fruitful-trades" target="_blank" rel="noopener">Source <span class="arrow">↗</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="build reveal">
+            <div class="build-media"><img src="assets/collectflow-buddy.png" alt="CollectFlow Buddy invoice collection platform" loading="lazy" /></div>
+            <div class="build-body">
+              <div class="build-top"><span class="tier">Flagship</span><span class="build-idx">04</span></div>
+              <h3 class="build-name">CollectFlow Buddy</h3>
+              <p class="build-desc">Field invoice-collection platform with 5-role access, Excel bulk import, auto-generated daily routes, GPS tracking, and deposit verification.</p>
+              <div class="chips"><span class="chip">React</span><span class="chip">Express</span><span class="chip">Prisma</span><span class="chip">PostgreSQL</span><span class="chip">JWT</span></div>
+              <div class="build-actions">
+                <a class="build-link is-live" href="https://collectflow-buddyd.vercel.app/" target="_blank" rel="noopener">Live demo <span class="arrow">↗</span></a>
+                <a class="build-link" href="https://github.com/Elbltagy2/collectflow-buddy" target="_blank" rel="noopener">Source <span class="arrow">↗</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="build reveal">
+            <div class="build-media"><img src="assets/Roashetta.png" alt="Roashetta clinic management system" loading="lazy" /></div>
+            <div class="build-body">
+              <div class="build-top"><span class="tier">Flagship</span><span class="build-idx">05</span></div>
+              <h3 class="build-name">Roashetta</h3>
+              <p class="build-desc">Medical-clinic management with a realtime patient queue, a canvas-based Egyptian prescription pad, and revenue analytics. Bilingual, with packaged desktop builds.</p>
+              <div class="chips"><span class="chip">React</span><span class="chip">Node</span><span class="chip">Express</span><span class="chip">SQLite</span><span class="chip">Socket.IO</span></div>
+              <div class="build-actions">
+                <a class="build-link is-live" href="https://elbltagy2.github.io/portfolio-demos/Roashetta/" target="_blank" rel="noopener">Live demo <span class="arrow">↗</span></a>
+                <a class="build-link" href="https://github.com/Elbltagy2/Roashetta" target="_blank" rel="noopener">Source <span class="arrow">↗</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="build reveal">
+            <div class="build-media"><img src="assets/safe-circle-help.png" alt="Safe Circle — realtime SOS app" loading="lazy" /></div>
+            <div class="build-body">
+              <div class="build-top"><span class="tier">Realtime</span><span class="build-idx">06</span></div>
+              <h3 class="build-name">Safe Circle</h3>
+              <p class="build-desc">Emergency SOS app that routes a patient's alert to the nearest hospital using live geolocation, notifies emergency contacts, and tracks response in realtime.</p>
+              <div class="chips"><span class="chip">TanStack Start</span><span class="chip">React</span><span class="chip">Supabase</span><span class="chip">Geolocation</span></div>
+              <div class="build-actions">
+                <a class="build-link" href="https://github.com/Elbltagy2/safe-circle-help" target="_blank" rel="noopener">Source <span class="arrow">↗</span></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- more work -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Selected work</span>
+          <h2 class="section-title">More across the stack.</h2>
+          <p class="section-note">Frontend apps, backends, integrations, and a little computer vision.</p>
+        </div>
+
+        <div class="more">
+          <a class="mini reveal" href="https://elbltagy2.github.io/portfolio-demos/firecheck-egypt/" target="_blank" rel="noopener">
+            <span class="mini-name">FireCheck Egypt <span class="arrow">↗</span></span>
+            <span class="mini-desc">Bilingual fire-safety compliance checker with a multi-step audit wizard and scoring engine.</span>
+            <span class="mini-tag" style="color:var(--signal)">● live demo · React · TypeScript</span>
+          </a>
+          <a class="mini reveal" href="https://github.com/Elbltagy2/noon_task" target="_blank" rel="noopener">
+            <span class="mini-name">noon_task <span class="arrow">↗</span></span>
+            <span class="mini-desc">Movie search app with detail pages and persistent favorites, on the TMDb API.</span>
+            <span class="mini-tag">Next.js · React · Zustand</span>
+          </a>
+          <a class="mini reveal" href="https://github.com/Elbltagy2/quick-nurse-care" target="_blank" rel="noopener">
+            <span class="mini-name">Quick Nurse Care <span class="arrow">↗</span></span>
+            <span class="mini-desc">On-demand home-nursing marketplace with multi-role auth and realtime job flow.</span>
+            <span class="mini-tag">TanStack Start · Supabase</span>
+          </a>
+          <a class="mini reveal" href="https://github.com/Elbltagy2/Task_Zimozi" target="_blank" rel="noopener">
+            <span class="mini-name">Task API (Zimozi) <span class="arrow">↗</span></span>
+            <span class="mini-desc">Production-grade Node backend: JWT auth, rate limiting, validation, and a Redis job queue.</span>
+            <span class="mini-tag">Node · MongoDB · Redis · BullMQ</span>
+          </a>
+          <a class="mini reveal" href="https://github.com/Elbltagy2/PayTabs-Checkout-System" target="_blank" rel="noopener">
+            <span class="mini-name">PayTabs Checkout <span class="arrow">↗</span></span>
+            <span class="mini-desc">E-commerce checkout with full PayTabs payment-gateway integration and order lifecycle.</span>
+            <span class="mini-tag">Django · Python · Payments</span>
+          </a>
+          <a class="mini reveal" href="https://github.com/Elbltagy2/p2p_ecommerce" target="_blank" rel="noopener">
+            <span class="mini-name">P2P Marketplace <span class="arrow">↗</span></span>
+            <span class="mini-desc">Modular marketplace backend: accounts, products, transactions, messaging, and disputes.</span>
+            <span class="mini-tag">Django · DRF · REST</span>
+          </a>
+          <a class="mini reveal" href="https://github.com/Elbltagy2/scandiweb-task" target="_blank" rel="noopener">
+            <span class="mini-name">Scandiweb Task <span class="arrow">↗</span></span>
+            <span class="mini-desc">Full-stack product manager — custom PHP OOP backend with a React SPA frontend.</span>
+            <span class="mini-tag">PHP · MySQL · React</span>
+          </a>
+          <a class="mini reveal" href="https://github.com/Elbltagy2/extension_button_report" target="_blank" rel="noopener">
+            <span class="mini-name">UI Report Extension <span class="arrow">↗</span></span>
+            <span class="mini-desc">Chrome MV3 extension that flags broken UI elements and stores reports to Supabase.</span>
+            <span class="mini-tag">JavaScript · Chrome MV3 · Supabase</span>
+          </a>
+          <a class="mini reveal" href="https://github.com/Elbltagy2/VolumHandControl" target="_blank" rel="noopener">
+            <span class="mini-name">Hand-Gesture Volume <span class="arrow">↗</span></span>
+            <span class="mini-desc">Computer-vision app mapping real-time hand tracking to system volume.</span>
+            <span class="mini-tag">Python · OpenCV · MediaPipe</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- stack -->
+    <section class="section section-alt" id="stack">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Toolkit</span>
+          <h2 class="section-title">The stack behind the builds.</h2>
+        </div>
+
+        <div class="stack">
+          <div class="stack-col reveal">
+            <div class="stack-col-title"><span>//</span> frontend</div>
+            <ul class="stack-list">
+              <li>React 18 / 19, TypeScript</li>
+              <li>Next.js, TanStack Start</li>
+              <li>Tailwind CSS, shadcn/ui</li>
+              <li>Redux Toolkit, Zustand</li>
+            </ul>
+          </div>
+          <div class="stack-col reveal">
+            <div class="stack-col-title"><span>//</span> backend</div>
+            <ul class="stack-list">
+              <li>Node — Express, NestJS, Fastify</li>
+              <li>Django + DRF, Python</li>
+              <li>PHP (OOP)</li>
+              <li>REST APIs, JWT auth, Clean Architecture</li>
+            </ul>
+          </div>
+          <div class="stack-col reveal">
+            <div class="stack-col-title"><span>//</span> data</div>
+            <ul class="stack-list">
+              <li>PostgreSQL, MongoDB, SQLite</li>
+              <li>Prisma, Mongoose</li>
+            </ul>
+          </div>
+          <div class="stack-col reveal">
+            <div class="stack-col-title"><span>//</span> realtime &amp; infra</div>
+            <ul class="stack-list">
+              <li>Socket.IO, Supabase realtime</li>
+              <li>Redis + BullMQ queues</li>
+              <li>Docker, Cloudflare Workers</li>
+            </ul>
+          </div>
+          <div class="stack-col reveal">
+            <div class="stack-col-title"><span>//</span> desktop &amp; specialized</div>
+            <ul class="stack-list">
+              <li>Electron desktop apps</li>
+              <li>Chrome Extensions (MV3)</li>
+              <li>OpenCV + MediaPipe, OpenGL/C</li>
+            </ul>
+          </div>
+          <div class="stack-col reveal">
+            <div class="stack-col-title"><span>//</span> integrations</div>
+            <ul class="stack-list">
+              <li>PayTabs payments</li>
+              <li>Barcode/QR, geolocation + OSRM</li>
+              <li>Excel import, PDF generation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- about -->
+    <section class="section" id="about">
+      <div class="wrap about-grid">
+        <div class="reveal">
+          <span class="eyebrow">About</span>
+          <h2 class="section-title" style="margin-top:16px;">Engineer who ships, and documents.</h2>
+        </div>
+        <div class="about-body reveal">
+          <p>I'm <strong>Ahmed Elbltagy</strong>, a full-stack and desktop developer and a Computer Science student at GUC. I build complete products — frontend, backend, realtime, and packaged desktop apps — for real businesses across <strong>healthcare, logistics, B2B trade, and fintech</strong>.</p>
+          <p>I work comfortably in both <strong>Arabic and English</strong>, including full right-to-left interfaces, and I've shipped everything from multi-tenant SaaS to offline-first POS systems.</p>
+          <p>What I care about: software that holds up in production, and that your team can <strong>actually maintain</strong> after I hand it over.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- contact -->
+    <section class="section" id="contact">
+      <div class="wrap">
+        <div class="contact reveal">
+          <div>
+            <h2 class="contact-title">Have something to build?</h2>
+            <p class="contact-sub">I'm available for freelance work. Tell me what you're building and I'll come back with a clear plan and timeline.</p>
+          </div>
+          <div class="contact-actions">
+            <!-- TODO: replace with your real freelance email -->
+            <a class="btn btn-light" href="mailto:your.email@example.com">Email me <span class="arrow">↗</span></a>
+            <a class="btn btn-line" href="https://github.com/Elbltagy2" target="_blank" rel="noopener">GitHub <span class="arrow">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span>© <span id="year">2026</span> Ahmed Elbltagy</span>
+      <span>built from scratch — <a href="https://github.com/Elbltagy2" target="_blank" rel="noopener">github.com/Elbltagy2</a></span>
+    </div>
+  </footer>
+
+  <script>
+    // current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // mobile nav toggle
+    var toggle = document.getElementById('navToggle');
+    var links = document.getElementById('navlinks');
+    toggle.addEventListener('click', function () {
+      var open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    links.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') { links.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+    });
+
+    // scroll reveal
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  </script>
+
+</body>
+</html>
